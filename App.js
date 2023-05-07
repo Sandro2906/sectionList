@@ -1,8 +1,17 @@
+import { useNavigation } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { ImageBackground, ScrollView, StyleSheet, Text, TouchableHighlight, TouchableOpacity, View } from 'react-native';
 
+
+
+
 export default function App() {
+  
+
+  const handlePress = (screen) => {
+    navigator.navigate(screen);
+   }
 
   const [item,setItem] = useState([
     {key: 1, item: 'Banja Luka'},
@@ -31,7 +40,7 @@ export default function App() {
       {
         array.map((i) => {
           return(
-            <TouchableOpacity>
+            <TouchableOpacity onPress={handlePress}>
             <View style={styles.miniCountry} key={i.key}>
             <ImageBackground resizeMode='cover' source={i.image} style={styles.image} />
             <Text style={styles.text}>{i.name}</Text>
